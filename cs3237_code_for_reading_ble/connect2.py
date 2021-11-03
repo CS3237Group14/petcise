@@ -100,7 +100,7 @@ class MovementSensorMPU9250(Sensor):
 #            cb(unpacked_data)
         milliseconds = int(round(time.time() * 1000))
         
-        if (self.address == "6B61D247-965C-4AB4-A067-4152836B9E4C"):
+        if (self.address == "8AA0FAB8-402B-43CE-9BB3-B40DD348C28D"):
             sensor1_data[0:6] = list(tuple([ v for v in data[0:6] ]))
             # sensor1_data.append(temp_data[0])
         else:
@@ -225,7 +225,7 @@ def run(addresses):
     loop.run_until_complete(dummy_function())
     
     data_np = np.array(data_jen)
-    np.savetxt('jumping_shreya.csv', data_np, delimiter=',')
+    np.savetxt('jumping_nguyen.csv', data_np, delimiter=',')
 
 async def dummy_function():
     await asyncio.sleep(50)
@@ -248,4 +248,4 @@ async def connect_to_device(address, loop):
             await asyncio.sleep(0.05, loop=loop)
 
 if __name__ == "__main__":
-    run([ "6B61D247-965C-4AB4-A067-4152836B9E4C", "FEA6CD43-DB35-4D1D-9CE1-5FD332231D00"])
+    run([ "8AA0FAB8-402B-43CE-9BB3-B40DD348C28D", "FEA6CD43-DB35-4D1D-9CE1-5FD332231D00"])
