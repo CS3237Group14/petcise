@@ -5,11 +5,38 @@ import struct
 from datetime import datetime
 import numpy as np
 
+import pyrebase
+
+import tensorflow as tf
+from tensorflow.python.keras.backend import set_session
+from keras.models import load_model
+from collections import deque
+
+task_queue = deque()
+ones = np.ones((20, 12))
+segment = np.asarray(np.ones((20, 12)), dtype= np.float32).reshape(-1, 240)
+task_queue.append(segment)
+
+config = {
+  "apiKey": "AIzaSyAVL9OlUxeg4ACKJS3l-i-qY6aJ-Bkee_4",
+  "authDomain": "cs3237-motion-detection.firebaseapp.com",
+  "databaseURL": "https://cs3237-motion-detection-default-rtdb.asia-southeast1.firebasedatabase.app/",
+  "storageBucket": "cs3237-motion-detection.appspot.com"
+}
+
+email = "nguyen2001ag2@gmail.com"
+password = "nguyen752001"
+
+print("I reached here")
+firebase = pyrebase.initialize_app(config)
+print("I have initilized the app")
+MODEL_FILE = "best_model.48-0.94.h5"
+
 data_jen = []
 temp_data = [30, 31]
 sensor1_data = [0, 0, 0, 0, 0, 0]
 sensor2_data = [0, 0, 0, 0, 0, 0]
-
+        
 class Service:
     """
     Here is a good documentation about the concepts in ble;
@@ -100,7 +127,7 @@ class MovementSensorMPU9250(Sensor):
 #            cb(unpacked_data)
         milliseconds = int(round(time.time() * 1000))
         
-        if (self.address == "8AA0FAB8-402B-43CE-9BB3-B40DD348C28D"):
+        if (self.address == "6B61D247-965C-4AB4-A067-4152836B9E4C"):
             sensor1_data[0:6] = list(tuple([ v for v in data[0:6] ]))
             # sensor1_data.append(temp_data[0])
         else:
@@ -113,9 +140,12 @@ class MovementSensorMPU9250(Sensor):
             
             data_np = np.array(data_jen)
             print("sensor data shape: ", data_np.shape)
+            if data_np.shape[0] % 20 == 0 and data_np.shape[0] != 0:
+                print("Append")
+                segments = data_np[-20, :12]
+                reshaped_segments = np.asarray(ones, dtype=np.float32).reshape(-1, 240)
+                task_queue.append(reshaped_segments)
         
-        
-
 
 class AccelerometerSensorMovementSensorMPU9250(MovementSensorMPU9250SubService):
     def __init__(self):
@@ -216,21 +246,53 @@ ecgUUID = "f000aa81-0451-4000-b000-000000000000"
 
 
 def run(addresses):
+    with session.graph.as_default():
+        set_session(session)
+        model = load_model(MODEL_FILE)
+        print("Done loading model")
     loop = asyncio.get_event_loop()
 
     for address in addresses:
+        print("enter loop")
         loop.create_task(connect_to_device(address, loop))
     
     # asyncio.sleep(30)
     loop.run_until_complete(dummy_function())
     
     data_np = np.array(data_jen)
-    np.savetxt('jumping_nguyen.csv', data_np, delimiter=',')
+    np.savetxt('jumping_shreya.csv', data_np, delimiter=',')
 
 async def dummy_function():
-    await asyncio.sleep(50)
+    db = firebase.database()
+    with session.graph.as_default():
+        set_session(session)
+        model = load_model(MODEL_FILE)
+        print("Done loading model")
     
+    while True:
+        # When predicting
+        with session.graph.as_default():
+            set_session(session)
+            while task_queue:
+                recv_dict = task_queue[0]
+                result = classify_flower(model, recv_dict)
+                task_queue.popleft()
+                print("Result", result)
+                data = { "name": result }
+                results = db.child("users").push(data)
+                print("Finish publishing");
+        await asyncio.sleep(2)
+                
+ 
+def classify_flower(model, data):
+    print("Start classifying")
+    result = model.predict(data)
+    themax = int(np.argmax(result))
+    print("Done.")
+    return themax
+        
 async def connect_to_device(address, loop):
+    print("Connect to device")
 
     async with BleakClient(address, loop=loop) as client:
 
@@ -247,5 +309,7 @@ async def connect_to_device(address, loop):
         while True:
             await asyncio.sleep(0.05, loop=loop)
 
+
 if __name__ == "__main__":
-    run([ "8AA0FAB8-402B-43CE-9BB3-B40DD348C28D", "FEA6CD43-DB35-4D1D-9CE1-5FD332231D00"])
+    session = tf.compat.v1.Session(graph = tf.compat.v1.Graph())
+    run([ "6B61D247-965C-4AB4-A067-4152836B9E4C", "FEA6CD43-DB35-4D1D-9CE1-5FD332231D00"])
