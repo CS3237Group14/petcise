@@ -15,14 +15,17 @@ from collections import deque
 task_queue = deque()
 
 config = {
-  "apiKey": "AIzaSyAVL9OlUxeg4ACKJS3l-i-qY6aJ-Bkee_4",
-  "authDomain": "cs3237-motion-detection.firebaseapp.com",
-  "databaseURL": "https://cs3237-motion-detection-default-rtdb.asia-southeast1.firebasedatabase.app/",
-  "storageBucket": "cs3237-motion-detection.appspot.com"
+"apiKey": "AIzaSyBdZuOO1qtHlAkfp4g4IBxXPJcltAcYHtw",
+  "authDomain": "motion-detection-40f42.firebaseapp.com",
+  "databaseURL": "https://motion-detection-40f42-default-rtdb.asia-southeast1.firebasedatabase.app",
+  "projectId": "motion-detection-40f42",
+  "storageBucket": "motion-detection-40f42.appspot.com",
+  "messagingSenderId": "163846818222",
+  "appId": "1:163846818222:web:2c967ba407c5086554e03f"
 }
 
-email = "nguyen2001ag2@gmail.com"
-password = "nguyen752001"
+email = "cs3237group14@gmail.com"
+password = "cs3237sg"
 
 print("I reached here")
 firebase = pyrebase.initialize_app(config)
@@ -125,23 +128,25 @@ class MovementSensorMPU9250(Sensor):
         milliseconds = int(round(time.time() * 1000))
         
         if (self.address == "8AA0FAB8-402B-43CE-9BB3-B40DD348C28D"):
-            sensor1_data[0:6] = list(tuple([ v for v in data[0:6] ]))
+            sensor1_data[0:6] = list(tuple([ v*gyro_scale/1.9455 for v in data[0:3] ])) + list(tuple([ v*acc_scale/0.0623 for v in data[3:6] ]))
             # sensor1_data.append(temp_data[0])
         else:
-            sensor2_data = list(tuple([ v for v in data[0:6] ]))
+            sensor2_data = list(tuple([ v*gyro_scale/1.9455 for v in data[0:3] ])) + list(tuple([ v*acc_scale/0.0623 for v in data[3:6] ]))
             # sensor1_data.append(temp_data[0])
             sensor_data = sensor2_data + sensor1_data
+            print(sensor_data)
             sensor_data.append(milliseconds)
         
             data_jen.append(sensor_data)
             
             data_np = np.array(data_jen)
             print("sensor data shape: ", data_np.shape)
-            if data_np.shape[0] % 20 == 0 and data_np.shape[0] != 0:
+            if data_np.shape[0] % 10 == 0 and data_np.shape[0] >= 20:
                 print("Append")
                 segments = data_np[-20:, :12]
                 print(segments.shape)
-                normalized_segments = segments / np.max(segments, axis=0)
+                # normalized_segments = segments / np.max(segments, axis=0)
+                normalized_segments = segments
                 reshaped_segments = np.asarray(normalized_segments, dtype=np.float32).reshape(-1, 240)
                 task_queue.append(reshaped_segments)
         
@@ -278,8 +283,8 @@ async def dummy_function():
                 task_queue.popleft()
                 print("Queue after pop:", len(task_queue))
                 print("Result", result)
-                data = { "name": result }
-                results = db.child("users").push(data)
+                data = { "result": result }
+                results = db.child("users/yinK7Dkc2lbPNhLxOSHiTTEkJiD3").push(data)
                 print("Finish publishing");
         await asyncio.sleep(2)
                 
@@ -287,6 +292,7 @@ async def dummy_function():
 def classify_activity(model, data):
     print("Start classifying")
     result = model.predict(data)
+    print(result)
     themax = int(np.argmax(result))
     print("Done.")
     return themax
