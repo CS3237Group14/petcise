@@ -30,7 +30,7 @@ password = "cs3237sg"
 print("I reached here")
 firebase = pyrebase.initialize_app(config)
 print("I have initilized the app")
-MODEL_FILE = "best_model.h5"
+MODEL_FILE = "best_model_v2.h5"
 
 data_jen = []
 temp_data = [30, 31]
@@ -134,7 +134,6 @@ class MovementSensorMPU9250(Sensor):
             sensor2_data = list(tuple([ v*gyro_scale/1.9455 for v in data[0:3] ])) + list(tuple([ v*acc_scale/0.0623 for v in data[3:6] ]))
             # sensor1_data.append(temp_data[0])
             sensor_data = sensor2_data + sensor1_data
-            print(sensor_data)
             sensor_data.append(milliseconds)
         
             data_jen.append(sensor_data)
@@ -143,8 +142,7 @@ class MovementSensorMPU9250(Sensor):
             print("sensor data shape: ", data_np.shape)
             if data_np.shape[0] % 10 == 0 and data_np.shape[0] >= 20:
                 print("Append")
-                segments = data_np[-20:, :12]
-                print(segments.shape)
+                segments = data_np[-20:, 0:12]
                 # normalized_segments = segments / np.max(segments, axis=0)
                 normalized_segments = segments
                 reshaped_segments = np.asarray(normalized_segments, dtype=np.float32).reshape(-1, 240)
@@ -279,6 +277,7 @@ async def dummy_function():
             set_session(session)
             while task_queue:
                 recv_dict = task_queue[0]
+                print('max', recv_dict.shape)
                 result = classify_activity(model, recv_dict)
                 task_queue.popleft()
                 print("Queue after pop:", len(task_queue))
