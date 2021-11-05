@@ -13,9 +13,6 @@ from keras.models import load_model
 from collections import deque
 
 task_queue = deque()
-ones = np.ones((20, 12))
-segment = np.asarray(np.ones((20, 12)), dtype= np.float32).reshape(-1, 240)
-task_queue.append(segment)
 
 config = {
   "apiKey": "AIzaSyAVL9OlUxeg4ACKJS3l-i-qY6aJ-Bkee_4",
@@ -30,7 +27,7 @@ password = "nguyen752001"
 print("I reached here")
 firebase = pyrebase.initialize_app(config)
 print("I have initilized the app")
-MODEL_FILE = "best_model.48-0.94.h5"
+MODEL_FILE = "best_model.h5"
 
 data_jen = []
 temp_data = [30, 31]
@@ -127,7 +124,7 @@ class MovementSensorMPU9250(Sensor):
 #            cb(unpacked_data)
         milliseconds = int(round(time.time() * 1000))
         
-        if (self.address == "6B61D247-965C-4AB4-A067-4152836B9E4C"):
+        if (self.address == "8AA0FAB8-402B-43CE-9BB3-B40DD348C28D"):
             sensor1_data[0:6] = list(tuple([ v for v in data[0:6] ]))
             # sensor1_data.append(temp_data[0])
         else:
@@ -142,8 +139,10 @@ class MovementSensorMPU9250(Sensor):
             print("sensor data shape: ", data_np.shape)
             if data_np.shape[0] % 20 == 0 and data_np.shape[0] != 0:
                 print("Append")
-                segments = data_np[-20, :12]
-                reshaped_segments = np.asarray(ones, dtype=np.float32).reshape(-1, 240)
+                segments = data_np[-20:, :12]
+                print(segments.shape)
+                normalized_segments = segments / np.max(segments, axis=0)
+                reshaped_segments = np.asarray(normalized_segments, dtype=np.float32).reshape(-1, 240)
                 task_queue.append(reshaped_segments)
         
 
@@ -275,8 +274,9 @@ async def dummy_function():
             set_session(session)
             while task_queue:
                 recv_dict = task_queue[0]
-                result = classify_flower(model, recv_dict)
+                result = classify_activity(model, recv_dict)
                 task_queue.popleft()
+                print("Queue after pop:", len(task_queue))
                 print("Result", result)
                 data = { "name": result }
                 results = db.child("users").push(data)
@@ -284,7 +284,7 @@ async def dummy_function():
         await asyncio.sleep(2)
                 
  
-def classify_flower(model, data):
+def classify_activity(model, data):
     print("Start classifying")
     result = model.predict(data)
     themax = int(np.argmax(result))
@@ -312,4 +312,4 @@ async def connect_to_device(address, loop):
 
 if __name__ == "__main__":
     session = tf.compat.v1.Session(graph = tf.compat.v1.Graph())
-    run([ "6B61D247-965C-4AB4-A067-4152836B9E4C", "FEA6CD43-DB35-4D1D-9CE1-5FD332231D00"])
+    run([ "8AA0FAB8-402B-43CE-9BB3-B40DD348C28D", "FEA6CD43-DB35-4D1D-9CE1-5FD332231D00"])
