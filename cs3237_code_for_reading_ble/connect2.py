@@ -36,7 +36,8 @@ data_jen = []
 temp_data = [30, 31]
 sensor1_data = [0, 0, 0, 0, 0, 0]
 sensor2_data = [0, 0, 0, 0, 0, 0]
-        
+count = 0
+
 class Service:
     """
     Here is a good documentation about the concepts in ble;
@@ -146,6 +147,8 @@ class MovementSensorMPU9250(Sensor):
                 # normalized_segments = segments / np.max(segments, axis=0)
                 normalized_segments = segments
                 reshaped_segments = np.asarray(normalized_segments, dtype=np.float32).reshape(-1, 240)
+                print("reshaped segments", reshaped_segments[:20])
+                count += 1
                 task_queue.append(reshaped_segments)
         
 
@@ -282,7 +285,10 @@ async def dummy_function():
                 task_queue.popleft()
                 print("Queue after pop:", len(task_queue))
                 print("Result", result)
-                data = { "result": result }
+                now = datetime.now()
+                d5 = now.strftime("%Y-%m-%d-%H-%M-%S")
+                timestamp_db = d5.split("-")
+                data = { "result": result, "timestamp": timestamp_db }
                 results = db.child("users/yinK7Dkc2lbPNhLxOSHiTTEkJiD3").push(data)
                 print("Finish publishing");
         await asyncio.sleep(2)
