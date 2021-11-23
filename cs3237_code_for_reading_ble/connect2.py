@@ -36,7 +36,7 @@ data_jen = []
 temp_data = [30, 31]
 sensor1_data = [0, 0, 0, 0, 0, 0]
 sensor2_data = [0, 0, 0, 0, 0, 0]
-count = 0
+count = []
 
 class Service:
     """
@@ -112,11 +112,18 @@ class MovementSensorMPU9250(Sensor):
         await client.write_gatt_char(self.ctrl_uuid, struct.pack("<H", self.ctrlBits))
 
         # set the period
+        # change for power testing
         write_value = bytearray([0x0A])
         await client.write_gatt_char(self.period_uuid, write_value)
 
         # listen using the handler
         await client.start_notify(self.data_uuid, self.callback)
+    
+    async def stop_listener(self, client, *args):
+        
+        # stop the sensor on the device
+        stop_bits = bytearray([0x0000])
+        await client.write_gatt_char(self.ctrl_uuid, stop_bits)
 
     def callback(self, sender: int, data: bytearray):
         gyro_scale = 500.0/65536.0
@@ -129,10 +136,10 @@ class MovementSensorMPU9250(Sensor):
         milliseconds = int(round(time.time() * 1000))
         
         if (self.address == "8AA0FAB8-402B-43CE-9BB3-B40DD348C28D"):
-            sensor1_data[0:6] = list(tuple([ v*gyro_scale/1.9455 for v in data[0:3] ])) + list(tuple([ v*acc_scale/0.0623 for v in data[3:6] ]))
+            sensor1_data[0:6] = list(tuple([ v for v in data[0:3] ])) + list(tuple([ v for v in data[3:6] ]))
             # sensor1_data.append(temp_data[0])
         else:
-            sensor2_data = list(tuple([ v*gyro_scale/1.9455 for v in data[0:3] ])) + list(tuple([ v*acc_scale/0.0623 for v in data[3:6] ]))
+            sensor2_data = list(tuple([ v for v in data[0:3] ])) + list(tuple([ v for v in data[3:6] ]))
             # sensor1_data.append(temp_data[0])
             sensor_data = sensor2_data + sensor1_data
             sensor_data.append(milliseconds)
@@ -141,14 +148,16 @@ class MovementSensorMPU9250(Sensor):
             
             data_np = np.array(data_jen)
             print("sensor data shape: ", data_np.shape)
+            
             if data_np.shape[0] % 10 == 0 and data_np.shape[0] >= 20:
                 print("Append")
-                segments = data_np[-20:, 0:12]
+                segments = data_np[-20:, 0:12].T
                 # normalized_segments = segments / np.max(segments, axis=0)
                 normalized_segments = segments
                 reshaped_segments = np.asarray(normalized_segments, dtype=np.float32).reshape(-1, 240)
-                print("reshaped segments", reshaped_segments[:20])
-                count += 1
+                print("reshaped segments", reshaped_segments[:20].shape)
+                count.append(1)
+                print("Count", len(count))
                 task_queue.append(reshaped_segments)
         
 
@@ -265,7 +274,7 @@ def run(addresses):
     loop.run_until_complete(dummy_function())
     
     data_np = np.array(data_jen)
-    np.savetxt('jumping_shreya.csv', data_np, delimiter=',')
+    np.savetxt('standing_shreya.csv', data_np, delimiter=',')
 
 async def dummy_function():
     db = firebase.database()
@@ -275,6 +284,7 @@ async def dummy_function():
         print("Done loading model")
     
     while True:
+    #while len(count) < 10:
         # When predicting
         with session.graph.as_default():
             set_session(session)
@@ -288,8 +298,10 @@ async def dummy_function():
                 now = datetime.now()
                 d5 = now.strftime("%Y-%m-%d-%H-%M-%S")
                 timestamp_db = d5.split("-")
-                data = { "result": result, "timestamp": timestamp_db }
-                results = db.child("users/yinK7Dkc2lbPNhLxOSHiTTEkJiD3").push(data)
+                weekday = datetime.today().weekday()
+                timestamp_int = [int(i) for i in timestamp_db] + [weekday]
+                data = { "result": result, "timestamp": timestamp_int  }
+                results = db.child("users/D47VUtocuWPNKunLFkA6u1WMFQr1").push(data)
                 print("Finish publishing");
         await asyncio.sleep(2)
                 
@@ -324,3 +336,4 @@ async def connect_to_device(address, loop):
 if __name__ == "__main__":
     session = tf.compat.v1.Session(graph = tf.compat.v1.Graph())
     run([ "8AA0FAB8-402B-43CE-9BB3-B40DD348C28D", "FEA6CD43-DB35-4D1D-9CE1-5FD332231D00"])
+    #run([ "57A8687A-4BC9-4EA0-A9F9-CDDFFAAA6CCA"])
