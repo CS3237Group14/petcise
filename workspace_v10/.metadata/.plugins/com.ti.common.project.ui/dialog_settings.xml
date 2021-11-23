@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="com.ti.common.project.ui.internal.preferences.ProductsPreferencePage">
+		<item key="ToolsPreferencePage.BROWSE_FILTER" value="C:\ti\xdctools_3_32_00_06_core"/>
+	</section>
+	<section name="com.ti.ccstudio.project.ui.internal.preferences.CodegenToolsPreferencePage">
+	</section>
+</section>

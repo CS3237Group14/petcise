@@ -1,0 +1,14 @@
+
+**** Build of configuration FlashROM for project sensortag_cc2650stk_stack ****
+
+"C:\\ti\\ccs1040\\ccs\\utils\\bin\\gmake" -k -j 12 all -O 
+ 
+"C:/ti/simplelink/ble_sdk_2_02_06_07/examples/cc2650stk/sensortag/ccs/stack/../../../../../tools/lib_search/lib_search.exe" C:/ti/simplelink/ble_sdk_2_02_06_07/examples/cc2650stk/sensortag/ccs/stack/build_config.opt "C:/ti/simplelink/ble_sdk_2_02_06_07/examples/cc2650stk/sensortag/ccs/stack/../../../../../tools/lib_search/params_split_cc2640.xml" C:/ti/simplelink/ble_sdk_2_02_06_07/examples/cc2650stk/sensortag/ccs/stack/../../../../../src/../blelib C:/ti/simplelink/ble_sdk_2_02_06_07/examples/cc2650stk/sensortag/ccs/stack/../config/lib_linker.cmd
+<<< Using Library: host_pxxx.a >>>
+<<< Using Library: cc2640_ctrl_pxxx.a >>>
+<<< Using Library: cc26xx_hci_tl_none.a >>>
+<<< Not Modifying lib_linker.cmd. Stack configurations have not changed. >>>
+ 
+gmake[2]: 'sensortag_cc2650stk_stack.out' is up to date.
+
+**** Build Finished ****

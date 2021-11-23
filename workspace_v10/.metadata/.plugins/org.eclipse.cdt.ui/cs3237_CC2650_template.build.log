@@ -1,0 +1,88 @@
+
+**** Build of configuration Debug for project cs3237_CC2650_template ****
+
+"C:\\ti\\ccs1040\\ccs\\utils\\bin\\gmake" -k -j 12 all -O 
+ 
+making ../src/sysbios/rom_sysbios.aem3 ...
+Building file: "../main.cfg"
+Invoking: XDCtools
+"C:/ti/ccs1040/xdctools_3_32_00_06_core/xs" --xdcpath="C:/ti/tirtos_cc13xx_cc26xx_2_21_00_06/packages;C:/ti/tirtos_cc13xx_cc26xx_2_21_00_06/products/tidrivers_cc13xx_cc26xx_2_21_00_04/packages;C:/ti/tirtos_cc13xx_cc26xx_2_21_00_06/products/bios_6_46_01_37/packages;C:/ti/tirtos_cc13xx_cc26xx_2_21_00_06/products/uia_2_01_00_01/packages;" xdc.tools.configuro -o configPkg -t ti.targets.arm.elf.M3 -p ti.platforms.simplelink:CC2650F128 -r release -c "C:/ti/ccs1040/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS" --compileOptions "-mv7M3 --code_state=16 --float_support=vfplib -me --include_path=\"C:/Users/nmngu/workspace_v10/cs3237_CC2650_template\" --include_path=\"C:/Users/nmngu/workspace_v10/cs3237_CC2650_template\" --include_path=\"C:/ti/tirtos_cc13xx_cc26xx_2_21_00_06/products/cc26xxware_2_24_03_17272\" --include_path=\"C:/ti/ccs1040/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/include\" --define=ccs -g --diag_warning=225 --diag_warning=255 --diag_wrap=off --display_error_number --gen_func_subsections=on --abi=eabi  " "../main.cfg"
+gmake[1]: Entering directory 'C:/Users/nmngu/workspace_v10/cs3237_CC2650_template/src/sysbios'
+asmem3 C:/ti/tirtos_cc13xx_cc26xx_2_21_00_06/products/bios_6_46_01_37/packages/ti/sysbios/family/arm/m3/Hwi_asm.sv7M ...
+gmake[1]: Leaving directory 'C:/Users/nmngu/workspace_v10/cs3237_CC2650_template/src/sysbios'
+gmake[1]: Entering directory 'C:/Users/nmngu/workspace_v10/cs3237_CC2650_template/src/sysbios'
+arem3 rom_sysbios.obj m3_Hwi_asm.obj m3_Hwi_asm_switch.obj m3_IntrinsicsSupport_asm.obj m3_TaskSupport_asm.obj ...
+gmake[1]: Leaving directory 'C:/Users/nmngu/workspace_v10/cs3237_CC2650_template/src/sysbios'
+configuring main.xem3 from package/cfg/main_pem3.cfg ...
+generating custom ROM library makefile ... 
+Starting build of library sources ...
+making C:/Users/nmngu/workspace_v10/cs3237_CC2650_template/src/sysbios/rom_sysbios.aem3 ...
+gmake[1]: Entering directory `C:/Users/nmngu/workspace_v10/cs3237_CC2650_template/src/sysbios'
+gmake[1]: Nothing to be done for `all'.
+gmake[1]: Leaving directory `C:/Users/nmngu/workspace_v10/cs3237_CC2650_template/src/sysbios'
+Build of libraries done.
+clem3 package/cfg/main_pem3.c ...
+"package/cfg/main_pem3.c", line 8023: warning #112-D: statement is unreachable
+Finished building: "../main.cfg"
+ 
+Building file: "../ccfg.c"
+Invoking: ARM Compiler
+"C:/ti/ccs1040/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/bin/armcl" -mv7M3 --code_state=16 --float_support=vfplib -me --include_path="C:/Users/nmngu/workspace_v10/cs3237_CC2650_template" --include_path="C:/Users/nmngu/workspace_v10/cs3237_CC2650_template" --include_path="C:/ti/tirtos_cc13xx_cc26xx_2_21_00_06/products/cc26xxware_2_24_03_17272" --include_path="C:/ti/ccs1040/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/include" --define=ccs -g --diag_warning=225 --diag_warning=255 --diag_wrap=off --display_error_number --gen_func_subsections=on --abi=eabi --preproc_with_compile --preproc_dependency="ccfg.d_raw" --cmd_file="configPkg/compiler.opt"  "../ccfg.c"
+Finished building: "../ccfg.c"
+ 
+Building file: "../SensorHdc1000.c"
+Invoking: ARM Compiler
+"C:/ti/ccs1040/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/bin/armcl" -mv7M3 --code_state=16 --float_support=vfplib -me --include_path="C:/Users/nmngu/workspace_v10/cs3237_CC2650_template" --include_path="C:/Users/nmngu/workspace_v10/cs3237_CC2650_template" --include_path="C:/ti/tirtos_cc13xx_cc26xx_2_21_00_06/products/cc26xxware_2_24_03_17272" --include_path="C:/ti/ccs1040/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/include" --define=ccs -g --diag_warning=225 --diag_warning=255 --diag_wrap=off --display_error_number --gen_func_subsections=on --abi=eabi --preproc_with_compile --preproc_dependency="SensorHdc1000.d_raw" --cmd_file="configPkg/compiler.opt"  "../SensorHdc1000.c"
+Finished building: "../SensorHdc1000.c"
+ 
+Building file: "../SensorBmp280.c"
+Invoking: ARM Compiler
+"C:/ti/ccs1040/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/bin/armcl" -mv7M3 --code_state=16 --float_support=vfplib -me --include_path="C:/Users/nmngu/workspace_v10/cs3237_CC2650_template" --include_path="C:/Users/nmngu/workspace_v10/cs3237_CC2650_template" --include_path="C:/ti/tirtos_cc13xx_cc26xx_2_21_00_06/products/cc26xxware_2_24_03_17272" --include_path="C:/ti/ccs1040/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/include" --define=ccs -g --diag_warning=225 --diag_warning=255 --diag_wrap=off --display_error_number --gen_func_subsections=on --abi=eabi --preproc_with_compile --preproc_dependency="SensorBmp280.d_raw" --cmd_file="configPkg/compiler.opt"  "../SensorBmp280.c"
+Finished building: "../SensorBmp280.c"
+ 
+Building file: "../SensorTmp007.c"
+Invoking: ARM Compiler
+"C:/ti/ccs1040/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/bin/armcl" -mv7M3 --code_state=16 --float_support=vfplib -me --include_path="C:/Users/nmngu/workspace_v10/cs3237_CC2650_template" --include_path="C:/Users/nmngu/workspace_v10/cs3237_CC2650_template" --include_path="C:/ti/tirtos_cc13xx_cc26xx_2_21_00_06/products/cc26xxware_2_24_03_17272" --include_path="C:/ti/ccs1040/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/include" --define=ccs -g --diag_warning=225 --diag_warning=255 --diag_wrap=off --display_error_number --gen_func_subsections=on --abi=eabi --preproc_with_compile --preproc_dependency="SensorTmp007.d_raw" --cmd_file="configPkg/compiler.opt"  "../SensorTmp007.c"
+Finished building: "../SensorTmp007.c"
+ 
+Building file: "../SensorI2C.c"
+Invoking: ARM Compiler
+"C:/ti/ccs1040/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/bin/armcl" -mv7M3 --code_state=16 --float_support=vfplib -me --include_path="C:/Users/nmngu/workspace_v10/cs3237_CC2650_template" --include_path="C:/Users/nmngu/workspace_v10/cs3237_CC2650_template" --include_path="C:/ti/tirtos_cc13xx_cc26xx_2_21_00_06/products/cc26xxware_2_24_03_17272" --include_path="C:/ti/ccs1040/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/include" --define=ccs -g --diag_warning=225 --diag_warning=255 --diag_wrap=off --display_error_number --gen_func_subsections=on --abi=eabi --preproc_with_compile --preproc_dependency="SensorI2C.d_raw" --cmd_file="configPkg/compiler.opt"  "../SensorI2C.c"
+Finished building: "../SensorI2C.c"
+ 
+Building file: "../SensorOpt3001.c"
+Invoking: ARM Compiler
+"C:/ti/ccs1040/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/bin/armcl" -mv7M3 --code_state=16 --float_support=vfplib -me --include_path="C:/Users/nmngu/workspace_v10/cs3237_CC2650_template" --include_path="C:/Users/nmngu/workspace_v10/cs3237_CC2650_template" --include_path="C:/ti/tirtos_cc13xx_cc26xx_2_21_00_06/products/cc26xxware_2_24_03_17272" --include_path="C:/ti/ccs1040/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/include" --define=ccs -g --diag_warning=225 --diag_warning=255 --diag_wrap=off --display_error_number --gen_func_subsections=on --abi=eabi --preproc_with_compile --preproc_dependency="SensorOpt3001.d_raw" --cmd_file="configPkg/compiler.opt"  "../SensorOpt3001.c"
+Finished building: "../SensorOpt3001.c"
+ 
+Building file: "../SensorUtil.c"
+Invoking: ARM Compiler
+"C:/ti/ccs1040/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/bin/armcl" -mv7M3 --code_state=16 --float_support=vfplib -me --include_path="C:/Users/nmngu/workspace_v10/cs3237_CC2650_template" --include_path="C:/Users/nmngu/workspace_v10/cs3237_CC2650_template" --include_path="C:/ti/tirtos_cc13xx_cc26xx_2_21_00_06/products/cc26xxware_2_24_03_17272" --include_path="C:/ti/ccs1040/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/include" --define=ccs -g --diag_warning=225 --diag_warning=255 --diag_wrap=off --display_error_number --gen_func_subsections=on --abi=eabi --preproc_with_compile --preproc_dependency="SensorUtil.d_raw" --cmd_file="configPkg/compiler.opt"  "../SensorUtil.c"
+Finished building: "../SensorUtil.c"
+ 
+Building file: "../main.c"
+Invoking: ARM Compiler
+"C:/ti/ccs1040/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/bin/armcl" -mv7M3 --code_state=16 --float_support=vfplib -me --include_path="C:/Users/nmngu/workspace_v10/cs3237_CC2650_template" --include_path="C:/Users/nmngu/workspace_v10/cs3237_CC2650_template" --include_path="C:/ti/tirtos_cc13xx_cc26xx_2_21_00_06/products/cc26xxware_2_24_03_17272" --include_path="C:/ti/ccs1040/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/include" --define=ccs -g --diag_warning=225 --diag_warning=255 --diag_wrap=off --display_error_number --gen_func_subsections=on --abi=eabi --preproc_with_compile --preproc_dependency="main.d_raw" --cmd_file="configPkg/compiler.opt"  "../main.c"
+Finished building: "../main.c"
+ 
+Building file: "../SensorMpu9250.c"
+Invoking: ARM Compiler
+"C:/ti/ccs1040/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/bin/armcl" -mv7M3 --code_state=16 --float_support=vfplib -me --include_path="C:/Users/nmngu/workspace_v10/cs3237_CC2650_template" --include_path="C:/Users/nmngu/workspace_v10/cs3237_CC2650_template" --include_path="C:/ti/tirtos_cc13xx_cc26xx_2_21_00_06/products/cc26xxware_2_24_03_17272" --include_path="C:/ti/ccs1040/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/include" --define=ccs -g --diag_warning=225 --diag_warning=255 --diag_wrap=off --display_error_number --gen_func_subsections=on --abi=eabi --preproc_with_compile --preproc_dependency="SensorMpu9250.d_raw" --cmd_file="configPkg/compiler.opt"  "../SensorMpu9250.c"
+Finished building: "../SensorMpu9250.c"
+ 
+Building file: "../CC2650STK.c"
+Invoking: ARM Compiler
+"C:/ti/ccs1040/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/bin/armcl" -mv7M3 --code_state=16 --float_support=vfplib -me --include_path="C:/Users/nmngu/workspace_v10/cs3237_CC2650_template" --include_path="C:/Users/nmngu/workspace_v10/cs3237_CC2650_template" --include_path="C:/ti/tirtos_cc13xx_cc26xx_2_21_00_06/products/cc26xxware_2_24_03_17272" --include_path="C:/ti/ccs1040/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/include" --define=ccs -g --diag_warning=225 --diag_warning=255 --diag_wrap=off --display_error_number --gen_func_subsections=on --abi=eabi --preproc_with_compile --preproc_dependency="CC2650STK.d_raw" --cmd_file="configPkg/compiler.opt"  "../CC2650STK.c"
+Finished building: "../CC2650STK.c"
+ 
+        1 file(s) copied.
+making ../src/sysbios/rom_sysbios.aem3 ...
+gmake[2]: Nothing to be done for 'all'.
+Building target: "cs3237_CC2650_template.out"
+Invoking: ARM Linker
+"C:/ti/ccs1040/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/bin/armcl" -mv7M3 --code_state=16 --float_support=vfplib -me --define=ccs -g --diag_warning=225 --diag_warning=255 --diag_wrap=off --display_error_number --gen_func_subsections=on --abi=eabi -z -m"cs3237_CC2650_template.map" --heap_size=0 --stack_size=256 -i"C:/ti/ccs1040/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/lib" -i"C:/ti/ccs1040/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/include" --reread_libs --diag_wrap=off --display_error_number --warn_sections --xml_link_info="cs3237_CC2650_template_linkInfo.xml" --rom_model -o "cs3237_CC2650_template.out" "./CC2650STK.obj" "./SensorBmp280.obj" "./SensorHdc1000.obj" "./SensorI2C.obj" "./SensorMpu9250.obj" "./SensorOpt3001.obj" "./SensorTmp007.obj" "./SensorUtil.obj" "./ccfg.obj" "./main.obj" "../CC2650STK.cmd" -l"configPkg/linker.cmd"  -l"C:/ti/tirtos_cc13xx_cc26xx_2_21_00_06/products/cc26xxware_2_24_03_17272/driverlib/bin/ccs/driverlib.lib" -llibc.a 
+<Linking>
+Finished building target: "cs3237_CC2650_template.out"
+ 
+
+**** Build Finished ****

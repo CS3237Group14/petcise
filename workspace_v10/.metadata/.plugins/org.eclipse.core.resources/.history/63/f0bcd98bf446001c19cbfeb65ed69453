@@ -1,0 +1,13 @@
+eclipse.preferences.version=1
+encoding//FlashROM/HAL/Common/subdir_rules.mk=UTF-8
+encoding//FlashROM/HAL/Common/subdir_vars.mk=UTF-8
+encoding//FlashROM/HAL/Target/CC2650/Drivers/subdir_rules.mk=UTF-8
+encoding//FlashROM/HAL/Target/CC2650/Drivers/subdir_vars.mk=UTF-8
+encoding//FlashROM/HAL/Target/CC2650/_common/subdir_rules.mk=UTF-8
+encoding//FlashROM/HAL/Target/CC2650/_common/subdir_vars.mk=UTF-8
+encoding//FlashROM/ICallBLE/subdir_rules.mk=UTF-8
+encoding//FlashROM/ICallBLE/subdir_vars.mk=UTF-8
+encoding//FlashROM/LIB/subdir_vars.mk=UTF-8
+encoding//FlashROM/sources.mk=UTF-8
+encoding//FlashROM/subdir_rules.mk=UTF-8
+encoding//FlashROM/subdir_vars.mk=UTF-8

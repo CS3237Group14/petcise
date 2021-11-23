@@ -1,0 +1,75 @@
+
+**** Build of configuration FlashOnly_OAD for project sensortag_cc2650stk_app ****
+
+"C:\\ti\\ccs1040\\ccs\\utils\\bin\\gmake" -k -j 12 all -O 
+ 
+Building file: "C:/ti/simplelink/ble_sdk_2_02_06_07/src/examples/sensortag/cc26xx/app/sensortag_tmp.c"
+Invoking: Arm Compiler
+"C:/ti/ccs1040/ccs/tools/compiler/ti-cgt-arm_5.2.6/bin/armcl" --cmd_file="C:/ti/simplelink/ble_sdk_2_02_06_07/examples/cc2650stk/sensortag/ccs/app/../../../../../src/config/build_components.opt" --cmd_file="C:/ti/simplelink/ble_sdk_2_02_06_07/examples/cc2650stk/sensortag/ccs/app/../stack/build_config.opt" --cmd_file="C:/ti/simplelink/ble_sdk_2_02_06_07/examples/cc2650stk/sensortag/ccs/app/../config/ccs_compiler_defines.bcfg"  -mv7M3 --code_state=16 --abi=eabi -me -O4 --opt_for_speed=0 --include_path="C:/ti/ccs1040/ccs/tools/compiler/ti-cgt-arm_5.2.6/include" --include_path="C:/ti/simplelink/ble_sdk_2_02_06_07/src/examples/sensortag/cc26xx/app" --include_path="C:/ti/simplelink/ble_sdk_2_02_06_07/src/controller/cc26xx/inc" --include_path="C:/ti/simplelink/ble_sdk_2_02_06_07/src/inc" --include_path="C:/ti/simplelink/ble_sdk_2_02_06_07/src/rom" --include_path="C:/ti/simplelink/ble_sdk_2_02_06_07/src/common/cc26xx" --include_path="C:/ti/simplelink/ble_sdk_2_02_06_07/src/icall/inc" --include_path="C:/ti/simplelink/ble_sdk_2_02_06_07/src/inc" --include_path="C:/ti/simplelink/ble_sdk_2_02_06_07/src/profiles/batt/cc26xx" --include_path="C:/ti/simplelink/ble_sdk_2_02_06_07/src/profiles/dev_info" --include_path="C:/ti/simplelink/ble_sdk_2_02_06_07/src/profiles/hid_dev/cc26xx" --include_path="C:/ti/simplelink/ble_sdk_2_02_06_07/src/profiles/keys" --include_path="C:/ti/simplelink/ble_sdk_2_02_06_07/src/profiles/oad/cc26xx" --include_path="C:/ti/simplelink/ble_sdk_2_02_06_07/src/profiles/roles" --include_path="C:/ti/simplelink/ble_sdk_2_02_06_07/src/profiles/roles/cc26xx" --include_path="C:/ti/simplelink/ble_sdk_2_02_06_07/src/profiles/sensor_profile/cc26xx" --include_path="C:/ti/simplelink/ble_sdk_2_02_06_07/src/components/heapmgr" --include_path="C:/ti/simplelink/ble_sdk_2_02_06_07/src/components/hal/src/inc" --include_path="C:/ti/simplelink/ble_sdk_2_02_06_07/src/components/hal/src/target/_common/cc26xx" --include_path="C:/ti/simplelink/ble_sdk_2_02_06_07/src/components/hal/src/target/_common" --include_path="C:/ti/simplelink/ble_sdk_2_02_06_07/src/target" --include_path="C:/ti/simplelink/ble_sdk_2_02_06_07/src/components/icall/src" --include_path="C:/ti/simplelink/ble_sdk_2_02_06_07/src/components/icall/src/inc" --include_path="C:/ti/simplelink/ble_sdk_2_02_06_07/src/components/osal/src/inc" --include_path="C:/ti/simplelink/ble_sdk_2_02_06_07/src/components/services/src/saddr" --include_path="C:/ti/simplelink/ble_sdk_2_02_06_07/src/components/services/src/sdata" --include_path="C:/ti/tirtos_cc13xx_cc26xx_2_21_01_08/products/cc26xxware_2_24_03_17272" --include_path="C:/ti/tirtos_cc13xx_cc26xx_2_21_01_08/products/tidrivers_cc13xx_cc26xx_2_21_01_01/packages" --include_path="C:/ti/tirtos_cc13xx_cc26xx_2_21_01_08/products/tidrivers_cc13xx_cc26xx_2_21_01_01/packages/ti/mw/extflash" --include_path="C:/ti/tirtos_cc13xx_cc26xx_2_21_01_08/products/tidrivers_cc13xx_cc26xx_2_21_01_01/packages/ti/mw/sensors" --include_path="C:/ti/tirtos_cc13xx_cc26xx_2_21_01_08/products/tidrivers_cc13xx_cc26xx_2_21_01_01/packages/ti/mw/sensortag" --c99 --define=CC2650STK --define=CC26XX --define=Display_DISABLE_ALL --define=EXCLUDE_AUDIO --define=FACTORY_IMAGE --define=FEATURE_OAD --define=GAPROLE_TASK_STACK_SIZE=600 --define=GATT_TI_UUID_128_BIT --define=HEAPMGR_SIZE=0 --define=ICALL_MAX_NUM_ENTITIES=11 --define=ICALL_MAX_NUM_TASKS=8 --define=POWER_SAVING --define=ST_TASK_STACK_SIZE=848 --define=USE_ICALL --define=xdc_runtime_Assert_DISABLE_ALL --define=xdc_runtime_Log_DISABLE_ALL --diag_warning=225 --diag_suppress=48 --diag_wrap=off --display_error_number --gen_func_subsections=on --preproc_with_compile --preproc_dependency="Application/sensortag_tmp.d_raw" --obj_directory="Application" --cmd_file="configPkg/compiler.opt"  "C:/ti/simplelink/ble_sdk_2_02_06_07/src/examples/sensortag/cc26xx/app/sensortag_tmp.c"
+"C:/ti/simplelink/ble_sdk_2_02_06_07/src/examples/sensortag/cc26xx/app/sensortag_tmp.c", line 307: warning #179-D: variable "buzzerOn" was declared but never referenced
+"C:/ti/simplelink/ble_sdk_2_02_06_07/src/examples/sensortag/cc26xx/app/sensortag_tmp.c", line 308: warning #179-D: variable "SCALE_LSB" was declared but never referenced
+"C:/ti/simplelink/ble_sdk_2_02_06_07/src/examples/sensortag/cc26xx/app/sensortag_tmp.c", line 309: warning #179-D: variable "temperature" was declared but never referenced
+Finished building: "C:/ti/simplelink/ble_sdk_2_02_06_07/src/examples/sensortag/cc26xx/app/sensortag_tmp.c"
+ 
+Building target: "sensortag_cc2650stk_app.out"
+Invoking: Arm Linker
+"C:/ti/ccs1040/ccs/tools/compiler/ti-cgt-arm_5.2.6/bin/armcl" --cmd_file="C:/ti/simplelink/ble_sdk_2_02_06_07/examples/cc2650stk/sensortag/ccs/app/../../../../../src/config/build_components.opt" --cmd_file="C:/ti/simplelink/ble_sdk_2_02_06_07/examples/cc2650stk/sensortag/ccs/app/../stack/build_config.opt" --cmd_file="C:/ti/simplelink/ble_sdk_2_02_06_07/examples/cc2650stk/sensortag/ccs/app/../config/ccs_compiler_defines.bcfg"  -mv7M3 --code_state=16 --abi=eabi -me -O4 --opt_for_speed=0 --c99 --define=CC2650STK --define=CC26XX --define=Display_DISABLE_ALL --define=EXCLUDE_AUDIO --define=FACTORY_IMAGE --define=FEATURE_OAD --define=GAPROLE_TASK_STACK_SIZE=600 --define=GATT_TI_UUID_128_BIT --define=HEAPMGR_SIZE=0 --define=ICALL_MAX_NUM_ENTITIES=11 --define=ICALL_MAX_NUM_TASKS=8 --define=POWER_SAVING --define=ST_TASK_STACK_SIZE=848 --define=USE_ICALL --define=xdc_runtime_Assert_DISABLE_ALL --define=xdc_runtime_Log_DISABLE_ALL --diag_warning=225 --diag_suppress=48 --diag_wrap=off --display_error_number --gen_func_subsections=on -z -m"sensortag_cc2650stk_app.map" --stack_size=256 --heap_size=0 -i"C:/ti/ccs1040/ccs/tools/compiler/ti-cgt-arm_5.2.6/lib" -i"C:/ti/ccs1040/ccs/tools/compiler/ti-cgt-arm_5.2.6/include" --reread_libs --diag_wrap=off --display_error_number --diag_suppress=10247-D --diag_suppress=16002-D --warn_sections --xml_link_info="sensortag_cc2650stk_app_linkInfo.xml" --rom_model --unused_section_elimination=on --compress_dwarf=on -o "sensortag_cc2650stk_app.out" "C:/ti/simplelink/ble_sdk_2_02_06_07/examples/cc2650stk/sensortag/ccs/config/ccs_linker_defines.cmd" "C:/ti/simplelink/ble_sdk_2_02_06_07/src/common/cc26xx/ccs/cc26xx_app_oad.cmd" "./Application/sensortag.obj" "./Application/sensortag_bar.obj" "./Application/sensortag_batt.obj" "./Application/sensortag_buzzer.obj" "./Application/sensortag_conn_ctrl.obj" "./Application/sensortag_factoryreset.obj" "./Application/sensortag_hum.obj" "./Application/sensortag_io.obj" "./Application/sensortag_keys.obj" "./Application/sensortag_mov.obj" "./Application/sensortag_oad.obj" "./Application/sensortag_opt.obj" "./Application/sensortag_register.obj" "./Application/sensortag_tmp.obj" "./Application/util.obj" "./Drivers/ECC/ECCROMCC26XX.obj" "./Drivers/I2C/I2C.obj" "./Drivers/I2C/I2CCC26XX.obj" "./Drivers/PIN/PINCC26XX.obj" "./Drivers/RF/RFCC26XX_singleMode.obj" "./Drivers/SPI/SPI.obj" "./Drivers/SPI/SPICC26XXDMA.obj" "./Drivers/TRNG/TRNGCC26XX.obj" "./Drivers/UDMA/UDMACC26XX.obj" "./ICall/icall.obj" "./ICall/icall_cc2650.obj" "./ICallBLE/ble_user_config.obj" "./ICallBLE/icall_api.obj" "./Middleware/extflash/ExtFlash.obj" "./Middleware/sensors/SensorBmp280.obj" "./Middleware/sensors/SensorHdc1000.obj" "./Middleware/sensors/SensorI2C.obj" "./Middleware/sensors/SensorMpu9250.obj" "./Middleware/sensors/SensorOpt3001.obj" "./Middleware/sensors/SensorTmp007.obj" "./Middleware/sensors/SensorUtil.obj" "./Middleware/sensortag/SensorTagTest.obj" "./PROFILES/barometerservice.obj" "./PROFILES/battservice.obj" "./PROFILES/ccservice.obj" "./PROFILES/devinfoservice.obj" "./PROFILES/gatt_uuid.obj" "./PROFILES/gattservapp_util.obj" "./PROFILES/humidityservice.obj" "./PROFILES/ioservice.obj" "./PROFILES/irtempservice.obj" "./PROFILES/movementservice.obj" "./PROFILES/oad.obj" "./PROFILES/oad_target_external_flash.obj" "./PROFILES/opticservice.obj" "./PROFILES/peripheral.obj" "./PROFILES/registerservice.obj" "./PROFILES/simplekeys.obj" "./PROFILES/st_util.obj" "./Startup/board.obj" "./Startup/main.obj" -l"configPkg/linker.cmd"  -llibc.a -l"C:/ti/tirtos_cc13xx_cc26xx_2_21_01_08/products/cc26xxware_2_24_03_17272/driverlib/bin/ccs/driverlib.lib" -l"C:/ti/simplelink/ble_sdk_2_02_06_07/src/rom/common_rom_releases/03282014/common_rom.symbols" 
+<Linking>
+Finished building target: "sensortag_cc2650stk_app.out"
+ 
+C:/ti/ccs1040/ccs/tools/compiler/ti-cgt-arm_5.2.6/bin/armhex -order MS --memwidth=8 --romwidth=8 --intel -o sensortag_cc2650stk_app.hex sensortag_cc2650stk_app.out & C:/ti/simplelink/ble_sdk_2_02_06_07/examples/cc2650stk/sensortag/ccs/app/../../../../../tools/oad/oad_image_tool.exe C:/Users/nmngu/workspace_v10/sensortag_cc2650stk_app/FlashOnly_OAD/sensortag_cc2650stk_app.hex -t offchip -i app --imgVer 0 -ob C:/Users/nmngu/workspace_v10/sensortag_cc2650stk_app/FlashOnly_OAD/sensortag_cc2650stk_app_oad.bin -m 0x1000 --r 0x1000
+Translating to Intel format...
+   "sensortag_cc2650stk_app.out" .imgHdr ==> .imgHdr
+   "sensortag_cc2650stk_app.out" .resetVecs ==> .resetVecs
+   "sensortag_cc2650stk_app.out" .text ==> .text
+   "sensortag_cc2650stk_app.out" .const ==> .const
+   "sensortag_cc2650stk_app.out" .cinit ==> .cinit
+ 
+******************************************************************************************
+Texas Instruments OAD Image Tool
+Version: 1.0
+******************************************************************************************
+ 
+OAD Type: offchip
+Img Type: APP
+Input file(s): sensortag_cc2650stk_app.hex
+Output Hex file: None
+Output Bin file: sensortag_cc2650stk_app_oad.bin
+ 
+Layout of concatenated input files, per flash sector, before applying --range.
+ 
+ 00 | 01 | 02 | 03 | 04 | 05 | 06 | 07 | 08 | 09 | 10 | 11 | 12 | 13 | 14 | 15 
+---- XXXX XXXX XXXX XXXX XXXX XXXX XXXX XXXX XXXX XXXX XXXX XXXX XXXX XXXX XXXX 
+---- XXXX XXXX XXXX XXXX XXXX XXXX XXXX XXXX XXXX XXXX XXXX XXXX XXXX XXXX XXXX 
+---- XXXX XXXX XXXX XXXX XXXX XXXX XXXX XXXX XXXX XXXX XXXX XXXX XXXX XXXX XXXX 
+---- XXXX XXXX XXXX XXXX XXXX XXXX XXXX XXXX XXXX XXXX XXXX XXXX XXXX XXxX XxXX 
+ 16 | 17 | 18 | 19 | 20 | 21 | 22 | 23 | 24 | 25 | 26 | 27 | 28 | 29 | 30 | 31 
+---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- 
+---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- 
+---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- 
+.--- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- 
+ 
+  Legend: `X` 100% full, `x` >50% full, `.` <50% full, `-` empty, `F` all 0xFF,
+  `0` all 0x00.
+******************************************************************************************
+Runtime Output:
+ 
+Last address was 0x10048. Expanded to 0x10050 to be divisible by OAD block size
+Placing metadata at 0x00001000
+ 
+The script has calculated the 16 Byte OAD Metadata vector below
+ 
+Bytes: | 0 - 2  |  2 - 4   | 4 - 6  | 6 - 8  |     8-12    | 12 - 14 |   15    |  16  |
+Desc : |  CRC   | CRC-SHDW | imgVer | imgLen |     usrId   | imgAddr | imgType | stat |
+---------------------------------------------------------------------------------------
+Data : | 0x7B6F |  0xFFFF  |     0  |  15380 | 45:45:45:45 |    400  |   01    |  FF  |
+******************************************************************************************
+ 
+Writing to:
+ C:/Users/nmngu/workspace_v10/sensortag_cc2650stk_app/FlashOnly_OAD/sensortag_cc2650stk_app_oad.bin
+******************************************************************************************
+Success
+******************************************************************************************
+ 
+
+**** Build Finished ****
